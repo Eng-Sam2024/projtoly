@@ -109,7 +109,7 @@ select active, count(*) from customer group by active;
 select film.film_id, film.title, inventory.inventory_id, film.rental_duration, datediff(return_date, rental_date) "Rental period", if(datediff(return_date, rental_date) <= rental_duration, "Returned in the same period", "Not returned in the same period") "Replay time" from film left join inventory using(film_id) left join rental using(inventory_id);
 
 
--- ******* testing ******
+-- ******* Testing Queries ******
 select * from category;
 select * from film;
 select datediff(return_date, rental_date) from rental;
