@@ -1,3 +1,4 @@
+Start
 The Note One
 The Note Two
 END
