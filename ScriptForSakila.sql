@@ -108,10 +108,13 @@ select active, count(*) from customer group by active;
 -- Specify the film rental period and match it with the actual rental period
 select film.film_id, film.title, inventory.inventory_id, film.rental_duration, datediff(return_date, rental_date) "Rental period", if(datediff(return_date, rental_date) <= rental_duration, "Returned in the same period", "Not returned in the same period") "Replay time" from film left join inventory using(film_id) left join rental using(inventory_id);
 
+-- Show service providers with their number per customer
+select customer.*, count(*) "Number of service providers", group_concat(concat_ws(" ", staff.first_name, staff.last_name) order by rental_date separator " / ") "Service providers" from customer inner join rental using(customer_id) inner join staff using(staff_id) group by customer_id;
+
 
 -- ******* Testing Queries ******
 select * from category;
-select * from film;
+select * from rental;
 select datediff(return_date, rental_date) from rental;
 select * from rental;
 select customer_id, address_id from customer where address_id = 1 union  select store_id, address_id from store where address_id = 1;
