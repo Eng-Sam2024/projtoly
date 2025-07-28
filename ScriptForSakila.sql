@@ -113,6 +113,7 @@ select customer.*, count(*) "Number of service providers", group_concat(concat_w
 
 
 -- ******* Testing Queries ******
+select * from customer;
 select * from category;
 select * from rental;
 select datediff(return_date, rental_date) from rental;
